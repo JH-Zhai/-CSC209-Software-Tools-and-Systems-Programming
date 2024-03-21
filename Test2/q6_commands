@@ -1,0 +1,4 @@
+ls -l 
+date
+wc q6_automate.c &
+grep background nosuchfile

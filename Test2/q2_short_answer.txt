@@ -1,0 +1,43 @@
+[4 marks]
+Question 2: Short answer
+
+[2 marks]
+a) In Assignment 1, the image files were stored as text files.  The set of 
+   10,000 test images required approximately 39 megabytes of space.  For 
+   Assignment 2, the image files were stored in binary format, and the same set 
+   of 10,000 test images required approximately 7 megabytes of space.
+
+   Explain why we need so much less space to store the same images in binary 
+   format. Be precise, and include concrete examples.
+
+ANSWER: 
+binary file is smaller to store same info. 
+example:
+binary file don't need space for space
+text: 1 1 1
+binary: 111
+
+binary file with use 1 byte for 1 unsigned char like 255, text file with 4 bytes for 1 integer.
+
+
+[2 marks]
+b) Provide a declaration for the variables x and y so the following code will 
+   compile correctly:
+
+char *mystery(int i, int j) {
+    // body of the function omitted.
+}
+
+x = mystery;
+y = mystery(3, 4);
+
+DECLARATION for x: 
+
+char* (*x) (int i, int j);
+
+DECLARATION for y: 
+char *y;
+
+
+
+

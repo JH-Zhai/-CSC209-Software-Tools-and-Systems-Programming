@@ -1,0 +1,41 @@
+Question 1
+Write your answer to each question directly in this file following "ANSWER"
+and submit this file.
+
+a)[1 mark] Why was it not possible to declare the dataset array or the labels 
+array in A1 as a local variable to main?
+
+ANSWER:
+Because they are used in other functions,  global variable can be used in all functions, local variable can't.
+
+b)[1 mark] Write a small snippet of C code (< 5 lines) that is an example of 
+a memory leak.
+
+ANSWER:
+
+int fun(){
+	char *hh = malloc(sizeof(char) * 1000);
+	return 20; // retrun without free hh;
+}
+
+
+c)[1 mark] Write a small snippet of C code (< 5 lines) that is an example of 
+a dangling pointer.
+
+ANSWER:
+
+int *ptr = malloc(sizeof(int));
+free(ptr); // after this line ptr is a dangling pointer
+*ptr = 44; //error
+
+
+
+d)[1 mark] Write a small snippet of C code (< 5 lines) that would be certain 
+to generate a segmentation fault.
+
+ANSWER:
+
+char *seg = "lalalala";
+seg[3] = 't';
+
+

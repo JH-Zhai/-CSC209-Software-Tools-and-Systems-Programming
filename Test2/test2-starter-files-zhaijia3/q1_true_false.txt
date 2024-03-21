@@ -1,0 +1,81 @@
+[8 marks]
+Question 1: True/False questions
+
+For each of the questions below, write TRUE beside the corresponding 
+ANSWER_* line if the statement is true, and write FALSE if the statement 
+is false.
+
+a) A header file is the appropriate place to declare types, function
+   prototypes, and global variables that are shared between files.
+
+ANSWER_a: 
+
+b) While debugging your program, you insert the statement 'printf("HERE");' to
+   try to isolate where the program is failing due to a segmentation fault.  
+   The fault is guaranteed to occur before this print statement if you don't see
+   this output on the screen.
+
+ANSWER_b:
+
+c) While debugging your program, you insert the statement 'printf("HERE");' to 
+   try to isolate where the program is failing due to a segmentation fault.  
+   The fault is guaranteed to occur after this print statement if you do see
+   this output on the screen.
+
+ANSWER_c: 
+
+d) If a string is written to a binary file using 
+   'fwrite(fp, str, strlen(str)+1)' 
+   where fp is a pointer to an open file, then the file cannot be read using
+   scanf since scanf only reads text output not binary.
+
+ANSWER_d: 
+
+e) A zombie process is a child process whose parent process has terminated but 
+   it continues to run.
+
+ANSWER_e: 
+
+f) When a process calls wait, the wait call will return when any child 
+   that this process created terminates.
+
+ANSWER_f: 
+
+g) When a process calls wait, the wait call will return when the first
+   process created by this process terminates.
+
+ANSWER_g: 
+
+===========
+h) Beside ANSWER_h, write the letter for the statement below that best explains 
+   what happens when we run the following program.  (Assume it compiles 
+   correctly.)
+
+A: The program prints "Waited for 1 processes"
+B: The program prints "Waited for 1 processesWaited for 1 processes"
+C: The program prints "Waited for 2 processes"
+D: The program prints "Waited for 2 processesWaited for 1 processes"
+E: The program terminates normally, but prints something other than 
+   one of the statements in A, B, C, or D
+F: The program terminates with an error
+G: The program does not terminate without explicitly killing it
+
+ANSWER_h: 
+
+int main() {
+    int r1 = fork();
+    if (r1 == 0) {
+        r1 = fork();
+        if (r1 == 0) {
+            exit(0);
+        }
+    }
+
+    int sum = 0;
+    while (wait(NULL) != -1) {
+        sum++;
+    }
+    fprintf(stderr, "Waited for %d processes", sum);
+    return 0;
+}
+

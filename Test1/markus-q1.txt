@@ -1,0 +1,48 @@
+Question 1
+Write your answer to each question directly in this file following "ANSWER"
+and submit this file.
+
+a)[1 mark] Why was it not possible to declare the dataset array or the labels 
+array in A1 as a local variable to main?
+
+ANSWER:
+The dataset array was too large to store on the stack.
+
+We also accepted answers that said that it was not possible for other functions
+to use the dataset array if it was declared in main.
+
+
+b)[1 mark] Write a small snippet of C code (< 5 lines) that is an example of 
+a memory leak.
+
+ANSWER:
+The answer must demonstrate that it is no longer possible dereference 
+the memory that is lost.  There are many different ways to do this.
+
+int *ptr = malloc(sizeof(int));
+ptr = NULL;
+
+
+c)[1 mark] Write a small snippet of C code (< 5 lines) that is an example of 
+a dangling pointer.
+
+ANSWER:
+It isn't a dangling pointer unless it is actually used (dereferenced) after 
+it is freed.  It is not sufficient to just call free.
+
+int *ptr = malloc(sizeof(int));
+free(ptr);
+*ptr = 10;
+
+
+d)[1 mark] Write a small snippet of C code (< 5 lines) that would be certain 
+to generate a segmentation fault.
+
+ANSWER:
+
+int *ptr = NULL;
+*ptr = 10;
+
+char *str = "literal";
+str[0] = 'z';
+

@@ -1,0 +1,82 @@
+[5 marks]  
+Question 4: Make
+
+Consider the following makefile:
+=====================================================
+all : server client                     # Rule 0
+
+server : server.o wrapper.o helper.o    # Rule 1
+    gcc -Wall -o $@ $^                  # Action 1
+
+client : client.o helper.o              # Rule 2
+    gcc -Wall -o $@ $^                  # Action 2
+
+%.o : %.c                               # Rule 3
+    gcc -Wall -c $<                     # Action 3
+
+clean :                                 # Rule 4
+    rm *.o server client                # Action 4
+=====================================================
+
+The current working directory initially contains the following files,
+and all of the .c files #include "helper.h"
+
+Makefile        helper.h        wrapper.c
+client.c        helper.c        server.c
+
+The commands in the following questions are executed in sequence, so each may 
+depend on the results of the previous commands. For each question state which 
+action lines are run or if there is an error, and state which files are created,
+updated, or deleted. If no files are created or modified, write None.
+
+a) make helper.o
+
+ACTIONS: 
+
+FILES CREATED or UPDATED: 
+
+FILES DELETED: 
+
+
+----------------------------------------------------
+b) make server
+
+ACTIONS:
+
+FILES CREATED or UPDATED: 
+
+FILES DELETED: 
+
+
+----------------------------------------------------
+c) make
+
+ACTIONS: 
+
+FILES CREATED or UPDATED: 
+
+FILES DELETED:
+
+
+----------------------------------------------------
+d) helper.h is modified, and then we run
+make client
+
+ACTIONS: 
+
+FILES CREATED or UPDATED: 
+
+FILES DELETED:
+
+
+----------------------------------------------------
+e) make clean
+
+ACTIONS: 
+
+FILES CREATED or UPDATED: 
+
+FILES DELETED: 
+
+----------------------------------------------------
+

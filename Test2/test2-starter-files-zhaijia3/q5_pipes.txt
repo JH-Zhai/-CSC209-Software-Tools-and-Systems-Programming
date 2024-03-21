@@ -1,0 +1,108 @@
+[9 marks]
+Question 5: Pipes
+
+This question refers to the program below.  Parts 1 and 2 are to be completed
+before any changes are made to the code.  Error checking in the code is omitted
+to make the code shorter.  The lack of error checking does not affect the 
+correctness of the program, and is not a reason for any errors.
+
+Part 1)
+
+[2 marks]
+a) Write TRUE beside ANSWER if following statement is true, and write FALSE if 
+   the statement is false.
+
+   The call to pipe(fd2) on line 5 could be moved after line 7 because 
+   it sets up a pipe for the child to write to the parent. Explain your answer.
+
+ANSWER: 
+
+EXPLANATION: 
+
+
+[1 mark]
+b) Beside ANSWER, write the letter for the statement below that best explains 
+   why the program does not terminate. (Assume no errors occur)
+       A: One of the processes is in an infinite loop
+       B: One of the processes is blocked (suspended) in a call to read
+       C: One of the processes is blocked (suspended) in a call to write
+       D: The reason the program does not terminate is not one of A, B, or C
+       E: The program terminates just fine
+
+ANSWER: 
+
+=========================================================================
+
+Part 2)  
+[1 mark]
+a) In the space below write appropriate error checking for the call to pipe on 
+line 4. 
+
+ANSWER:
+
+
+[1 mark]
+b) Explain why a call to pipe might fail.
+
+ANSWER: 
+
+
+
+=========================================================================
+
+[4 marks]
+Part 3)
+The program below is missing one or more calls to close().  State below
+where each close statement should be added. For full marks each call to close() 
+must come as early as possible for the correctness of the program and all open 
+descriptors must be explicitly closed before the process terminates.
+(If two calls are adjacent, their order doesn't matter.)
+
+Here is one done for you to show what we are looking for:
+add close(fd2[0]) after line 8 or 9  (Both would be correct)
+
+ANSWER:
+
+
+
+---------------------------------------------------------------------
+#define ITERATIONS 20
+
+ 1 int main() {
+
+ 2     int fd1[2];
+ 3     int fd2[2];
+
+ 4     pipe(fd1);
+ 5     pipe(fd2);
+
+ 6     int result = fork();
+ 7     if (result == 0) {
+ 8         int value;
+ 9         close(fd1[1]);
+
+10         while (read(fd1[0], &value, sizeof(int))) {
+11             value += 1;
+12             write(fd2[1], &value, sizeof(int));
+13         }
+
+14         close(fd1[0]);
+15         close(fd2[1]);
+16         exit(0);
+
+17     } else {
+
+18         int num;
+
+19         for (int i = 0; i < ITERATIONS; i++) {
+20             write(fd1[1], &i, sizeof(int));
+21         }
+ 
+22         while (read(fd2[0], &num, sizeof(int))) {
+23             printf("[%d] read %d\n", getpid(), num);
+24         }
+ 
+25     }
+
+26     return 0;
+27 }
